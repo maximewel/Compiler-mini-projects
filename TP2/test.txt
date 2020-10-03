@@ -1,0 +1,4 @@
+toto = 2;
+3 + toto;
+ab = 18;
+toto + ab
