@@ -15,6 +15,7 @@ t_MUL_OP = r'[\*/]'
 t_VAR = r"[^\d]\w+"
 literals = r'[\(\);=]'
 
+
 #a bit more complex
 def t_NUMBER(t) :
     r'\d+(\.\d+)?'

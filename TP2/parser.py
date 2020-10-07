@@ -18,9 +18,6 @@ precedence = (
     ('right', 'UMINUS'),
 )
 
-def p_error(p) :
-    print("syntax error in line {}".format(p.lineno))
-    yacc.errok()
 
 def p_program(p) :
     '''program : statement
@@ -59,7 +56,11 @@ def p_expression_uminus(p):
     '''expression : ADD_OP expression %prec UMINUS'''
     p[0] = operations[p[1]](0, p[2])
 
-yacc.yacc(outputdir = "generated")
+def p_error(p) :
+    print("syntax error in line {}".format(p.lineno))
+    parser.errok()
+
+parser = yacc.yacc(outputdir = "generated")
 variables = {}
 
 if __name__ == "__main__":
