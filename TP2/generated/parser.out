@@ -7,9 +7,9 @@ Rule 1     program -> statement
 Rule 2     program -> statement ; program
 Rule 3     statement -> assignement
 Rule 4     statement -> expression
-Rule 5     assignement -> VAR = expression
+Rule 5     assignement -> IDENTIFIER = expression
 Rule 6     expression -> NUMBER
-Rule 7     expression -> VAR
+Rule 7     expression -> IDENTIFIER
 Rule 8     expression -> ( expression )
 Rule 9     expression -> expression ADD_OP expression
 Rule 10    expression -> expression MUL_OP expression
@@ -22,9 +22,9 @@ Terminals, with rules where they appear
 ;                    : 2
 =                    : 5
 ADD_OP               : 9 11
+IDENTIFIER           : 5 7
 MUL_OP               : 10
 NUMBER               : 6
-VAR                  : 5 7
 error                : 
 
 Nonterminals, with rules where they appear
@@ -43,15 +43,15 @@ state 0
     (2) program -> . statement ; program
     (3) statement -> . assignement
     (4) statement -> . expression
-    (5) assignement -> . VAR = expression
+    (5) assignement -> . IDENTIFIER = expression
     (6) expression -> . NUMBER
-    (7) expression -> . VAR
+    (7) expression -> . IDENTIFIER
     (8) expression -> . ( expression )
     (9) expression -> . expression ADD_OP expression
     (10) expression -> . expression MUL_OP expression
     (11) expression -> . ADD_OP expression
 
-    VAR             shift and go to state 5
+    IDENTIFIER      shift and go to state 5
     NUMBER          shift and go to state 6
     (               shift and go to state 7
     ADD_OP          shift and go to state 8
@@ -98,14 +98,14 @@ state 4
 
 state 5
 
-    (5) assignement -> VAR . = expression
-    (7) expression -> VAR .
+    (5) assignement -> IDENTIFIER . = expression
+    (7) expression -> IDENTIFIER .
 
     =               shift and go to state 12
-    ADD_OP          reduce using rule 7 (expression -> VAR .)
-    MUL_OP          reduce using rule 7 (expression -> VAR .)
-    ;               reduce using rule 7 (expression -> VAR .)
-    $end            reduce using rule 7 (expression -> VAR .)
+    ADD_OP          reduce using rule 7 (expression -> IDENTIFIER .)
+    MUL_OP          reduce using rule 7 (expression -> IDENTIFIER .)
+    ;               reduce using rule 7 (expression -> IDENTIFIER .)
+    $end            reduce using rule 7 (expression -> IDENTIFIER .)
 
 
 state 6
@@ -123,14 +123,14 @@ state 7
 
     (8) expression -> ( . expression )
     (6) expression -> . NUMBER
-    (7) expression -> . VAR
+    (7) expression -> . IDENTIFIER
     (8) expression -> . ( expression )
     (9) expression -> . expression ADD_OP expression
     (10) expression -> . expression MUL_OP expression
     (11) expression -> . ADD_OP expression
 
     NUMBER          shift and go to state 6
-    VAR             shift and go to state 14
+    IDENTIFIER      shift and go to state 14
     (               shift and go to state 7
     ADD_OP          shift and go to state 8
 
@@ -140,14 +140,14 @@ state 8
 
     (11) expression -> ADD_OP . expression
     (6) expression -> . NUMBER
-    (7) expression -> . VAR
+    (7) expression -> . IDENTIFIER
     (8) expression -> . ( expression )
     (9) expression -> . expression ADD_OP expression
     (10) expression -> . expression MUL_OP expression
     (11) expression -> . ADD_OP expression
 
     NUMBER          shift and go to state 6
-    VAR             shift and go to state 14
+    IDENTIFIER      shift and go to state 14
     (               shift and go to state 7
     ADD_OP          shift and go to state 8
 
@@ -160,15 +160,15 @@ state 9
     (2) program -> . statement ; program
     (3) statement -> . assignement
     (4) statement -> . expression
-    (5) assignement -> . VAR = expression
+    (5) assignement -> . IDENTIFIER = expression
     (6) expression -> . NUMBER
-    (7) expression -> . VAR
+    (7) expression -> . IDENTIFIER
     (8) expression -> . ( expression )
     (9) expression -> . expression ADD_OP expression
     (10) expression -> . expression MUL_OP expression
     (11) expression -> . ADD_OP expression
 
-    VAR             shift and go to state 5
+    IDENTIFIER      shift and go to state 5
     NUMBER          shift and go to state 6
     (               shift and go to state 7
     ADD_OP          shift and go to state 8
@@ -182,14 +182,14 @@ state 10
 
     (9) expression -> expression ADD_OP . expression
     (6) expression -> . NUMBER
-    (7) expression -> . VAR
+    (7) expression -> . IDENTIFIER
     (8) expression -> . ( expression )
     (9) expression -> . expression ADD_OP expression
     (10) expression -> . expression MUL_OP expression
     (11) expression -> . ADD_OP expression
 
     NUMBER          shift and go to state 6
-    VAR             shift and go to state 14
+    IDENTIFIER      shift and go to state 14
     (               shift and go to state 7
     ADD_OP          shift and go to state 8
 
@@ -199,14 +199,14 @@ state 11
 
     (10) expression -> expression MUL_OP . expression
     (6) expression -> . NUMBER
-    (7) expression -> . VAR
+    (7) expression -> . IDENTIFIER
     (8) expression -> . ( expression )
     (9) expression -> . expression ADD_OP expression
     (10) expression -> . expression MUL_OP expression
     (11) expression -> . ADD_OP expression
 
     NUMBER          shift and go to state 6
-    VAR             shift and go to state 14
+    IDENTIFIER      shift and go to state 14
     (               shift and go to state 7
     ADD_OP          shift and go to state 8
 
@@ -214,16 +214,16 @@ state 11
 
 state 12
 
-    (5) assignement -> VAR = . expression
+    (5) assignement -> IDENTIFIER = . expression
     (6) expression -> . NUMBER
-    (7) expression -> . VAR
+    (7) expression -> . IDENTIFIER
     (8) expression -> . ( expression )
     (9) expression -> . expression ADD_OP expression
     (10) expression -> . expression MUL_OP expression
     (11) expression -> . ADD_OP expression
 
     NUMBER          shift and go to state 6
-    VAR             shift and go to state 14
+    IDENTIFIER      shift and go to state 14
     (               shift and go to state 7
     ADD_OP          shift and go to state 8
 
@@ -242,13 +242,13 @@ state 13
 
 state 14
 
-    (7) expression -> VAR .
+    (7) expression -> IDENTIFIER .
 
-    )               reduce using rule 7 (expression -> VAR .)
-    ADD_OP          reduce using rule 7 (expression -> VAR .)
-    MUL_OP          reduce using rule 7 (expression -> VAR .)
-    ;               reduce using rule 7 (expression -> VAR .)
-    $end            reduce using rule 7 (expression -> VAR .)
+    )               reduce using rule 7 (expression -> IDENTIFIER .)
+    ADD_OP          reduce using rule 7 (expression -> IDENTIFIER .)
+    MUL_OP          reduce using rule 7 (expression -> IDENTIFIER .)
+    ;               reduce using rule 7 (expression -> IDENTIFIER .)
+    $end            reduce using rule 7 (expression -> IDENTIFIER .)
 
 
 state 15
@@ -308,12 +308,12 @@ state 18
 
 state 19
 
-    (5) assignement -> VAR = expression .
+    (5) assignement -> IDENTIFIER = expression .
     (9) expression -> expression . ADD_OP expression
     (10) expression -> expression . MUL_OP expression
 
-    ;               reduce using rule 5 (assignement -> VAR = expression .)
-    $end            reduce using rule 5 (assignement -> VAR = expression .)
+    ;               reduce using rule 5 (assignement -> IDENTIFIER = expression .)
+    $end            reduce using rule 5 (assignement -> IDENTIFIER = expression .)
     ADD_OP          shift and go to state 10
     MUL_OP          shift and go to state 11
 

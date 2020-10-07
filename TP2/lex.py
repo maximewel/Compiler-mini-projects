@@ -6,13 +6,13 @@ tokens = (
     'NUMBER', 
     'ADD_OP',
     'MUL_OP',
-    'VAR',
+    'IDENTIFIER',
 )
 
 #simple regexes
 t_ADD_OP = r'[\+-]'
 t_MUL_OP = r'[\*/]'
-t_VAR = r"[^\d]\w+"
+t_IDENTIFIER = r"[^\d]\w+"
 literals = r'[\(\);=]'
 
 
