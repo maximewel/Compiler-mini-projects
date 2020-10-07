@@ -9,7 +9,8 @@ __pycache__/
 #YACC compiler : useless on the repo
 */generated/
 generated/
-*-ast.pdf #generated graph
+*-ast.pdf 
+#generated graph
 
 # Distribution / packaging
 .Python
