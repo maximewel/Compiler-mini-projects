@@ -1,4 +1,4 @@
-toto = 2;
-ab = 18;
-cd = 10;
-toto + ab + cd + 2
+toto = 4;
+ab = 2 + 12;
+cd = toto;
+toto + ab + cd

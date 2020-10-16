@@ -68,3 +68,4 @@ if __name__ == "__main__":
     with open(filename) as prog :
         result = yacc.parse(prog.read())
         print(result)
+        print(variables)
