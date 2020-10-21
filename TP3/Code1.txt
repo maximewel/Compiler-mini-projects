@@ -1,0 +1,5 @@
+vari=0;
+while (vari-10) {
+   print vari;
+   vari = vari+1
+}

@@ -1,0 +1,4 @@
+vari=0;
+while (vari-10) {
+   vari = vari+1
+}
