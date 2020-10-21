@@ -75,7 +75,11 @@ if __name__ == "__main__":
     with open(filename) as prog :
         result = yacc.parse(prog.read())
         print(result)
-    graph=result.makegraphicaltree()
+    graph = result.makegraphicaltree()
     name = os.path.splitext(sys.argv[1])[0] + "-ast.pdf"
     graph.write_pdf(name)
     print("file generated : {}".format(name))
+
+def parse(program):
+    result = yacc.parse(program)
+    return result
