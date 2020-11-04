@@ -4,18 +4,6 @@ from functools import reduce
 from parserast import parse
 import sys
 
-" Infos ! La fonction debug(f) est un décorateur "
-def debug(f):
-    def inner(*args):
-        '''
-        Infos ! Explorez :
-            - La variable "LATok"
-            - "f.__name__", qui donne le nom de la fonction f passée en argument
-            - Les arguments "args"
-        '''
-        print(f"in function {f.__name__}")
-        return f(*args)
-    return inner
 
 #init ops and vars
 ops = {
