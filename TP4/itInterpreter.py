@@ -1,6 +1,4 @@
 import ast
-from ast import addToClass
-from functools import reduce
 from parserast import parse
 from threader import thread
 import sys
@@ -35,19 +33,29 @@ def execute(node):
             print(valueOfToken(val))
         elif node.__class__== ast.OpNode:
             arg2 = valueOfToken(stack.pop())
-            if node.nbargs = 2:
+            if node.nbargs == 2:
                 arg1 = valueOfToken(stack.pop())
             else:
                 arg1 = 0
             stack.append(ops[node.op](arg1, arg2))
-        if node.text:
+        elif node.__class__ == ast.AssignNode:
+            val = valueOfToken(stack.pop())
+            name = stack.pop()
+            vars[name] = val
+        elif node.__class__ == ast.WhileNode:
+            cond = valueOfToken(stack.pop())
+            if cond:
+                node = node.next[0]
+            else:
+                node = node.next[1]
+            continue
+        if node.next:
             node = node.next[0]
         else:
             node = None
 
 if __name__ == "__main__":
     prog = open(sys.argv[1]).read()
-    ast = parse(prog)
-    entry = thread(ast)
-
+    astree = parse(prog)
+    entry = thread(astree)
     execute(entry)
