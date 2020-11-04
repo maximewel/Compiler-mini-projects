@@ -6,6 +6,8 @@ import os
 
 from lex2 import tokens
 
+
+    return inner
 operations = {
     "+"   : lambda x,y: x+y,
     "-"   : lambda x,y: x-y,
